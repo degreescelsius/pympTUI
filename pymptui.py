@@ -185,6 +185,7 @@ os.system('cls' if os.name == 'nt' else 'clear')
 from packaging import version
 import requests
 import pyfiglet
+import yt_dlp
 
 if os.name == "nt":
     config_dir = os.path.join(os.getenv("APPDATA"), "pymp")
