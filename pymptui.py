@@ -266,8 +266,8 @@ def mp3_download_menu(stdscr):
 
     url = input("Youtube URL: ")
     output = input("Output location and name: ")
-        if output == "":
-            output = "~/Downloads/audio"
+    if output == "":
+        output = "~/Downloads/audio"
     download_youtube_mp3(url, output + ".mp3")
 
 def mp3_partial_download_menu(stdscr):
@@ -279,8 +279,8 @@ def mp3_partial_download_menu(stdscr):
 
     url = input("Youtube URL: ")
     output = input("Output location and name: ")
-        if output == "":
-            output = "~/Downloads/audio"
+    if output == "":
+        output = "~/Downloads/audio"
     start_time = input("Enter the start time in seconds (or in HH:MM:SS): ")
     end_time = input("Enter the end time in seconds (or in HH:MM:SS): ")
     download_youtube_mp3_partial(url, output + ".mp3", start_time, end_time)
@@ -294,8 +294,8 @@ def mp4_download_menu(stdscr):
 
     url = input("Youtube URL: ")
     output = input("Output location and name: ")
-        if output == "":
-            output = "~/Downloads/video"
+    if output == "":
+        output = "~/Downloads/video"
     download_youtube_mp4(url, output + ".mp4")
 
 def mp4_partial_download_menu(stdscr):
@@ -307,8 +307,8 @@ def mp4_partial_download_menu(stdscr):
 
     url = input("Youtube URL: ")
     output = input("Output location and name: ")
-        if output == "":
-            output = "~/Downloads/video"
+    if output == "":
+        output = "~/Downloads/video"
     start_time = input("Enter the start time in seconds (or in HH:MM:SS): ")
     end_time = input("Enter the end time in seconds (or in HH:MM:SS): ")
     download_youtube_mp4_partial(url, output + ".mp4", start_time, end_time)
