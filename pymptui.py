@@ -11,7 +11,7 @@ __version__ = "v2.0"
 
 def get_latest_release_tag():
     try:
-        url = "https://api.github.com/repos/cells-OSS/pymp/releases/latest"
+        url = "https://api.github.com/repos/degreescelsius/pymptui/releases/latest"
         response = requests.get(url, timeout=5)
         response.raise_for_status()
         data = response.json()
@@ -29,7 +29,7 @@ def is_update_available(current_version):
 def download_latest_script():
     latest_version = get_latest_release_tag()
     filename = f"pymp-v{latest_version}.py"
-    url = "https://raw.githubusercontent.com/cells-OSS/pymp/main/pymp.py"
+    url = "https://raw.githubusercontent.com/degreescelsius/pymptui/main/pymptui.py"
     response = requests.get(url)
     lines = response.text.splitlines()
     with open(filename, "w", encoding="utf-8") as f:
