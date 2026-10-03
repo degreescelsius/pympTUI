@@ -59,6 +59,23 @@ def download_youtube_mp3(youtube_url, output_path):
     except subprocess.CalledProcessError as e:
         print(f"An error occurred: {e}")
 
+def download_youtube_mp3_album(youtube_url, output_dir='.'):
+    output = os.path.join(output_dir, "%(playlist_index&{} - |)s%(title)s.%(ext)s")
+
+    try:
+        yt_dlp_cmd = 'yt-dlp.exe' if os.name == 'nt' else 'yt-dlp'
+        subprocess.run([
+            yt_dlp_cmd,
+            '-x', '--audio-format', 'mp3',
+            '--yes-playlist', '-o', output,
+            youtube_url
+        ], check=True)
+        print(f"Audio downloaded and saved as {output}")
+        input("Press Enter to continue...")
+        os.execv(sys.executable, [sys.executable] + sys.argv)
+    except subprocess.CalledProcessError as e:
+        print(f"An error occurred: {e}")
+
 def download_youtube_mp3_partial(youtube_url, output_path, start_time, end_time):
     """
     Download only a section as MP3 using yt-dlp's --download-sections and extract audio.
@@ -264,11 +281,26 @@ def mp3_download_menu(stdscr):
     curses.echo()
     curses.endwin()
 
+    album_or_single = input("Are you downloading an album or a single?: ")
+    if album_or_single.lower() == "album":
+        playlist = True
+    else: 
+        playlist = False
+
     url = input("Youtube URL: ")
-    output = input("Output location and name: ")
+
+    if playlist == 1:
+        output = input("Output location and name: ")
+    else:
+        output = input("Output location and name: ")
+
     if output == "":
         output = "~/Downloads/audio"
-    download_youtube_mp3(url, output + ".mp3")
+    
+    if playlist == 1:
+       download_youtube_mp3_album(url, output)
+    else:
+        download_youtube_mp3(url, output + ".mp3")
 
 def mp3_partial_download_menu(stdscr):
 
